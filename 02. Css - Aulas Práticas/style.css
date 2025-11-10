@@ -1,0 +1,76 @@
+*{
+    margin:0;
+    padding: 0;
+    outline: 0;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    height: 180vh; /*Define o tamanho do nosso site*/
+
+}
+
+.container{
+    background-color: #121212;
+    width: 700px;
+    color: #ffffff;
+    margin: auto;
+    padding: 50px;
+    border: 5px solid red;
+    border-radius: 10px;
+}
+
+/*
+    > 1. Por padrão, temos o Static:
+        - Elementos são posicionados de acordo com o fluxo normal do documento.
+        - Não é afetado por propriedades de posicionamento como top, bottom, left, right.
+        - Fica estatico na página, ou seja, não se move quando a página é rolada.
+
+    > 2. Relative:
+        - Elementos são posicionados em relação à sua posição original no fluxo do documento.
+        - Pode ser movido usando as propriedades top, bottom, left, right.
+        - O espaço original do elemento ainda é reservado no layout.
+
+    > 3. Absolute:
+        - Elementos são removidos do fluxo normal do documento.
+        - Posicionados em relação ao seu ancestral mais próximo que tenha uma posição diferente de static.
+        (mudando o elemento dentro de uma outra div)
+        - Não afeta o layout dos outros elementos, pois não ocupa espaço no fluxo.
+        
+    > 4. Fixed:
+        - Elementos são removidos do fluxo normal do documento. 
+        - Posicionados em relação à janela de visualização (viewport).
+        - Fica fixo na tela, mesmo quando a página é rolada.
+
+    > 5. Sticky:
+        - Combina características de relative e fixed. (funciona assim como o relative, mas quando atinge um certo ponto, se torna fixed)
+        - Elementos são tratados como relative até que atinjam um ponto específico na rolagem da página, onde se tornam fixed.
+        - Útil para criar cabeçalhos que permanecem visíveis enquanto o usuário rola
+    */
+
+/*.area{
+    - position: relative; Posiciona o elemento em relação à sua posição original
+    width: 200px;
+    height: 80px;
+    background-color: green;
+    position:fixed; Remove o elemento do fluxo normal do documento e o posiciona em relação à janela de visualização
+    top:50px;
+    right:80px;
+}*/
+
+/*.area-absolute{
+    position: absolute; /*Remove o elemento do fluxo normal do documento
+    top: 50px; /*Posiciona o elemento 50px abaixo do topo da área relativa
+    border: 5px solid blue;
+}*/
+
+header{
+
+    /*cabecalho*/
+    background-color: cyan;
+    width: 100%;
+    position: sticky; /*Fixa o cabeçalho no topo da página quando rolada*/
+    top: 0px; /*Posiciona o cabeçalho no topo da página*/
+}
+
+

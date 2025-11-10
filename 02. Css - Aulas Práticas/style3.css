@@ -1,0 +1,24 @@
+/* 
+   color:
+       -rgb(0,0,255) = blue
+       -#0000FF = blue
+       -rgba(0,0,255,1) = blue - opacidade 1 - 100%
+    Font-family:
+       -Arial
+       -Verdana
+       -Times New Roman
+       -Courier New
+       -Georgia
+       -Tahoma
+       -Impact
+       -Lucida Console
+       -Comic Sans MS
+       -sans-serif - Sem serifas. 
+       - Ariel, Helvetica, sans-serif - Arial ou Helvetica ou sans-serif (caso não tenha na sequência, passa para o próximo)
+    
+*/
+
+.primeiro-h1{
+    color: #ff0000;
+    font-family: "Roboto", sans-serif;
+}

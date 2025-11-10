@@ -1,0 +1,23 @@
+/* 
+    class: primeiro-h1 - Os estilos criados para todos dessa classe serão aplicados a todos os elementos que tiverem essa classe.
+    Exemplo: <h1 class="primeiro-h1">Título</h1>
+
+    id: titulo - Os estilos criados para o id serão aplicados apenas ao elemento que tiver esse id.
+    Exemplo: <h1 id="titulo">Título</h1>
+
+         - font-style: italic - O estilo de fonte itálico será aplicado ao texto.
+    
+*/
+
+.primeiro-h1{
+    color: red;
+}
+
+#titulo{
+    color: green;
+}
+
+.titulo-h2{
+    color: blue;
+    font-style: italic;
+}

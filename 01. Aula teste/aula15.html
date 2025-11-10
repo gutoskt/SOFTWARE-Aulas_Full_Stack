@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Continuação p.2 - Criando formulários</title>
+</head>
+<body>
+    <!--
+    > required - Atributo que indica que o campo é obrigatório (tem que ser preenchido)
+    > radio - Cria um botão de opção (radio button) que permite selecionar apenas uma opção entre várias
+    > checcked - Atributo que indica que o botão de opção está selecionado por padrão
+
+    
+    > strong - Cria um texto em negrito
+    > select - Cria uma lista suspensa (dropdown) para selecionar uma opção
+    > option - Cria uma opção dentro de uma lista suspensa
+    > selected disabled - Atributos que indicam que a opção está selecionada por padrão e não pode ser selecionada pelo usuário
+    -->
+
+    <h1>Formulários</h1>
+    <form>
+        <label for="pnome">Primeiro Nome</label>
+        <input type="text" id="pnome" name="pnome" placeholder="Seu primeiro nome" required> <br> <br>
+        
+        <label for="unome"> Ultimo nome</label>
+        <input type="text" id="unome" name="unome" placeholder="Seu ultimo nome" required> <br> <br>
+
+        <!--
+        Tipo - Radio 
+        -->
+        <label>
+            <strong>Qual seu nivel como programador atualmente?</strong>
+        </label> <br>
+
+        <label>
+            <input type="radio" nome="nivel" value="iniciante" >Sou iniciante
+        </label>
+
+        <label>
+            <input type="radio" name="nivel" value="medio" >Comecei a pouco tempo
+        </label>
+
+        <label>
+            <input type="radio" name="nivel" value="avancado">Sou avancado
+        </label>
+        <br><br>
+
+        <!--
+        Tipo - Select 
+        -->
+
+        <label for="escolaridade">
+            <strong>Sua escolaridade?</strong>
+        </label>
+
+        <select id="escolaridade">
+            <option selected disabled value="">Selecione</option>
+            <option>Educacao basica</option>
+            <option>Ensino medio</option>
+            <option>Ensino superior</option>
+            <option>Pos-graduacao</opiton>
+        </select>
+
+        <br><br>
+
+
+        <input type="submit" volue="Cadastrar" nome="cadastrar">
+
+    </form>
+</body>
+</html>

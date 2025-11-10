@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula - Datalist</title>
+
+</head>
+<body>
+    <!--
+    AULA DE DATALIST:
+
+          > datalist - Cria uma lista de opções predefinidas que podem ser usadas em um campo de entrada
+          > Exemplo: <input for="Carros" list="Carros" name="carro" placeholder="Procurando algum carro">   
+            > A lista de opções é definida dentro do elemento datalist, que é referenciado pelo atributo "list" do campo de entrada
+            > A lista de opções é exibida como sugestões quando o usuário começa a digitar no campo de entrada
+    -->
+
+    <h1>Tag Detail e Summary</h1>
+    <details open>
+        <summary><strong>Motor 1.6</strong></summary>
+        <p>O carro possui um motor super forte e rápido...</p>
+    </details><br>
+
+    <details>
+        <summary><strong>Conforto</strong></summary>
+        <p>Carro de luxo com sensor de ré, cameras e som de qualidade.</p>
+    </details><br>
+
+    <details>
+        <summary><strong>Preço</strong></summary>
+        <p>12x de R$1.000</p>
+    </details>
+
+    <h2>Aplicando datalist</h2>
+    
+    <form>
+        <input for="Carros" list="Carros" name="carro" placeholder="Procurando algum carro">
+        <datalist id="Carros">
+            <option value="Gol 1.6"></option>
+            <option value="Golf 1.4"></option>
+            <option value="BMW 1.0"></option>
+            <option value="Onix 1.0"></option>
+        </datalist>
+    </form>
+    
+    
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Email e Datas</title>
+</head>
+<body>
+    <!--
+    AULA DE EMAIL E DATAS:
+
+          >email - Cria um campo de entrada para endereços de email
+          > Exemplo: <input type="email" id="email" name="email" placeholder="@email.com">
+
+          >data e hora - datetime-local - Cria um campo de entrada para selecionar uma data e hora
+          > Exemplo: <input type="datetime-local" id="nascimento" name="nascimento" required>
+
+          >date - Cria um campo de entrada para selecionar uma data
+          > Exemplo: <input type="date" id="nascimento" name="nascimento" required>
+    -->
+
+    <h1>Formulários</h1>
+    <form>
+
+        <labe for="email">Seu email</labe>
+
+        <input type="email" id="email" name="email" placeholder="@email.com"><br><br> 
+
+        <label for="pnome">Primeiro Nome</label>
+        <input type="text" id="pnome" name="pnome" placeholder="Seu primeiro nome" required> <br> <br>
+        
+        <label for="unome"> Ultimo nome</label>
+        <input type="text" id="unome" name="unome" placeholder="Seu ultimo nome" required> <br> <br>
+
+        <!--
+        Tipo - Radio 
+        -->
+        <label>
+            <strong>Qual seu nivel como programador atualmente?</strong>
+        </label> <br>
+
+        <label>
+            <input type="radio" nome="nivel" value="iniciante" >Sou iniciante
+        </label>
+
+        <label>
+            <input type="radio" name="nivel" value="medio" >Comecei a pouco tempo
+        </label>
+
+        <label>
+            <input type="radio" name="nivel" value="avancado">Sou avancado
+        </label>
+        <br><br>
+
+        <!--
+        Tipo - Select 
+        -->
+
+        <label for="escolaridade">
+            <strong>Sua escolaridade?</strong>
+        </label>
+
+        <select id="escolaridade" required>
+            <option selected disabled value="">Selecione</option>
+            <option>Educacao basica</option>
+            <option>Ensino medio</option>
+            <option>Ensino superior</option>
+            <option>Pos-graduacao</opiton>
+        </select> <br><br>
+
+        <label>
+            <strong>Selecione as tecnologias que você conhece:</strong>
+        </label><br><br>
+
+        <input type="checkbox" id="tecnologia1" name="tecnologia1" valeu="HTML">
+        <label for="tecnologia1">HTML</label><br>
+
+        <input type="checkbox" id="tecnologia2" name="tecnologia2" valeu="CSS">
+        <label for="tecnologia2">CSS</label><br>
+
+        <input type="checkbox" id="tecnologia3" name="tecnologia3" valeu="JavaScript">
+        <label for="tecnologia3">JavaScript</label><br>
+
+        <input type="checkbox" id="tecnologia4" name="tecnologia4" valeu="php">
+        <label for="tecnologia4">PHP</label><br><br>
+
+        <!--
+        Tipo - Date
+        -->
+
+        <label for="nascimento">
+            <strong>Data de nascimento:</strong>
+        </label>
+        <input type="datetime-local" id="nascimento" name="nascimento" required>
+
+        <br><br>
+
+
+        <input type="submit" volue="Cadastrar" nome="cadastrar">
+
+    </form>
+</body>
+</html>

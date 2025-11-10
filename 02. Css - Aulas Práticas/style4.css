@@ -1,0 +1,92 @@
+/* 
+    margin - Espaço entre o conteúdo e a borda do elemento (em cima, direita, baixo, esquerda)
+         - auto - Centraliza o elemento horizontalmente
+
+    margin-top - Espaço entre o topo do elemento e o topo do seu elemento pai
+
+    margin-left - Espaço entre a esquerda do elemento e a esquerda do seu elemento pai
+
+    margin-right - Espaço entre a direita do elemento e a direita do seu elemento pai
+
+    margin-bottom - Espaço entre a parte inferior do elemento e a parte inferior do seu elemento pai
+
+padding - Espaço entre o conteúdo do elemento e a borda do elemento (em cima, direita, baixo, esquerda)
+         - auto - Centraliza o elemento horizontalmente
+
+    padding-top - Espaço entre o topo do conteúdo do elemento e a borda superior do elemento
+
+    padding-left - Espaço entre a esquerda do conteúdo do elemento e a borda esquerda do elemento
+
+    padding-right - Espaço entre a direita do conteúdo do elemento e a borda direita do elemento
+
+    padding-bottom - Espaço entre a parte inferior do conteúdo do elemento e a borda inferior do elemento
+
+border - Define a borda do elemento
+         - 5px - Espessura da borda
+         - solid - Estilo da borda (pode ser solid, dashed, dotted, double, etc.)
+         - red - Cor da borda
+            - border-radius - Define o raio de arredondamento dos cantos da borda
+    
+border box - Define que o tamanho do elemento inclui a borda e o padding
+         - box-sizing: border-box; - Faz com que o tamanho do elemento inclua a borda e o padding
+*/
+
+*{
+    box-sizing: border-box;
+}
+body{
+    font-family: "Roboto", sans-serif;
+}
+
+h1{
+    margin: 0px;
+}
+
+.container{
+    background-color: #121212;
+    width: 700px;
+    color: #ffffff;
+    /*margin: 50px;*/
+    /*margin-top:70px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-bottom:50px;/*/
+
+    margin: auto;
+    padding: 50px;
+
+    /*padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;*/
+
+    border: 5px solid red;
+    border-radius: 10px;
+
+}
+
+.rede-social h2{
+    text-align: center;
+}
+
+.rede-social ul{
+    padding: 0px;
+    list-style: none;
+    text-align: center;
+}
+
+.rede-social li{
+    margin-bottom: 10px;
+}
+
+.rede-social a{
+    text-decoration: none;
+    color: #000000
+}
+
+/*hover: quando passamos a tecla por cima.*/
+
+.rede-social a:hover{
+    
+    color: #ff0000
+}
