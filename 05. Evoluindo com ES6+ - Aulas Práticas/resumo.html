@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumo Completo: DevOps (Cap. 10)</title>
+    <!-- Carrega o Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carrega a fonte Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Define a fonte Inter como padrão */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Efeito de hover sutil para os cards */
+        .info-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .info-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        /* Estilo para blocos de código (embora não usado neste resumo, mantido para consistência) */
+        pre {
+            background-color: #f3f4f6; /* bg-gray-100 */
+            padding: 12px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #1f2937; /* text-gray-800 */
+        }
+        code {
+            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Container Principal -->
+    <div class="container mx-auto max-w-5xl px-4 py-12 sm:py-16">
+
+        <!-- Cabeçalho -->
+        <header class="text-center mb-12">
+            <h1 class="text-4xl sm:text-5xl font-bold text-blue-700 mb-4">DevOps</h1>
+            <p class="text-xl text-gray-600">Um Resumo Detalhado do Capítulo 10</p>
+        </header>
+
+        <!-- Seção Principal de Conteúdo -->
+        <main class="space-y-10">
+
+            <!-- Card: Introdução ao DevOps -->
+            <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-gray-200 info-card">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-blue-600 mb-5">1. Introdução ao DevOps</h2>
+                <div class="space-y-4 text-gray-700">
+                    <p>Historicamente, as áreas de TI eram divididas em **Desenvolvimento (Dev)** e **Operações (Ops)**. Isso criava um "silo" onde a equipa de operações só tomava conhecimento de um sistema na véspera da implantação, causando atrasos, problemas de infraestrutura e stresse.</p>
+                    
+                    <blockquote class="border-l-4 border-blue-300 pl-4 py-2 my-2 bg-blue-50">
+                        <p>"Imagine a world where product owners, development, QA, IT Operations, and Infosec work together, not only to help each other, but also to ensure that the overall organization succeeds."</p>
+                        <cite class="text-sm text-gray-600 not-italic">- Gene Kim, Jez Humble, et al.</cite>
+                    </blockquote>
+
+                    <div>
+                        <h3 class="font-semibold text-lg mb-1">O que é DevOps?</h3>
+                        <p>DevOps é um movimento que visa unificar as culturas de **Dev** e **Ops** para permitir a implantação mais rápida, ágil e menos traumática de um sistema. A ideia é que estes profissionais atuem em conjunto desde os primeiros sprints, antecipando problemas e automatizando a entrega.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Card: Princípios da Entrega de Software -->
+            <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-gray-200 info-card">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-blue-600 mb-5">2. Princípios da Entrega de Software (Jez Humble & David Farley)</h2>
+                <div class="space-y-4 text-gray-700">
+                    <ul class="list-disc list-inside space-y-2 pl-2">
+                        <li><strong>Crie um processo repetível e confiável:</strong> A entrega de software não pode ser um evento manual e traumático. Deve ser tão simples como "apertar um botão".</li>
+                        <li><strong>Automatize tudo que for possível:</strong> Build, testes, configuração de servidores, carga de banco de dados, etc.</li>
+                        <li><strong>Mantenha tudo em um sistema de controle de versões:</strong> Não apenas o código, mas scripts de administração, documentação, arquivos de dados, etc.</li>
+                        <li><strong>Se um passo causa dor, execute-o com mais frequência:</strong> O exemplo clássico é a integração. Se integrar causa dor, integre mais frequentemente (Integração Contínua).</li>
+                        <li><strong>"Concluído" significa pronto para entrega:</strong> A funcionalidade deve estar 100% pronta para ir para produção.</li>
+                        <li><strong>Todos são responsáveis pela entrega:</strong> Quebra os silos entre desenvolvimento e operações.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Card: Controle de Versões -->
+            <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-gray-200 info-card">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-blue-600 mb-5">3. Controle de Versões (VCS)</h2>
+                <p class="text-gray-700 mb-6">Fundamental para a colaboração, permite armazenar o código num repositório central e manter um histórico de todas as alterações, permitindo "voltar no tempo".</p>
+                
+                <div class="space-y-8">
+                    <!-- Item: VCS Centralizado vs. Distribuído -->
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                        <h3 class="font-semibold text-xl text-blue-800 mb-3">VCS Centralizado vs. Distribuído (DVCS)</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold">VCS Centralizado (Ex: Subversion - SVN)</h4>
+                                <p class="text-sm text-gray-700 mt-1">Arquitetura cliente/servidor. Existe um único servidor. O "commit" é feito diretamente no servidor central.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">VCS Distribuído (Ex: Git, Mercurial)</h4>
+                                <p class="text-sm text-gray-700 mt-1">Arquitetura peer-to-peer. Cada programador tem um repositório local completo. O "commit" é feito localmente e depois sincronizado ("push"/"pull").</p>
+                                <h5 class="font-semibold text-sm mt-3 mb-1">Vantagens do DVCS:</h5>
+                                <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                                    <li>Trabalho offline.</li>
+                                    <li>Commits mais rápidos e frequentes.</li>
+                                    <li>Maior flexibilidade na sincronização.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item: Git vs. GitHub -->
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                        <h3 class="font-semibold text-xl text-blue-800 mb-3">Git vs. GitHub</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-2">
+                            <li><strong>Git:</strong> É o sistema de controle de versões distribuído (DVCS) criado por Linus Torvalds. É a ferramenta de linha de comando que gere o código.</li>
+                            <li><strong>GitHub:</strong> É um *serviço de hospedagem* para repositórios Git (como o GMail é um serviço para email). Oferece uma interface web, gestão de repositórios, pull requests, etc. (Alternativas: GitLab, BitBucket).</li>
+                        </ul>
+                    </div>
+
+                    <!-- Item: Multirepos vs. Monorepos -->
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                        <h3 class="font-semibold text-xl text-blue-800 mb-3">Multirepos vs. Monorepos</h3>
+                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h4 class="font-semibold">Multirepos</h4>
+                                <p class="text-sm text-gray-700 mt-1">A abordagem tradicional. Um repositório para cada projeto (ex: `empresa/sistema1`, `empresa/sistema2`).</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Monorepos</h4>
+                                <p class="text-sm text-gray-700 mt-1">Um único repositório para *todos* os projetos da organização (ex: `empresa/codigo`, com subdiretórios `sistema1`, `sistema2`). Usado por Google, Facebook, Microsoft.</p>
+                                <h5 class="font-semibold text-sm mt-3 mb-1">Vantagens do Monorepo:</h5>
+                                <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                                    <li>Única "fonte da verdade".</li>
+                                    <li>Incentiva o reúso de código.</li>
+                                    <li>Mudanças atómicas (um único commit afeta vários sistemas).</li>
+                                    <li>Facilita refatorações em larga escala.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+             <!-- Card: Integração Contínua -->
+            <section class="bg-white p-6 sm:p-8 rounded-xl shadow-lg border border-gray-200 info-card">
+                <h2 class="text-2xl sm:text-3xl font-semibold text-blue-600 mb-5">4. Integração Contínua (CI)</h2>
+                
+                <div class="space-y-8">
+                    <!-- Item: Motivação -->
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                        <h3 class="font-semibold text-xl text-blue-800 mb-3">A Motivação: O "Inferno da Integração"</h3>
+                        <p class="text-gray-700 mb-4">Tradicionalmente, programadores trabalhavam isolados em *branches de funcionalidades* (feature branches) por semanas ou meses. Quando tentavam juntar (fazer `merge`) o seu código de volta ao `master`, ocorriam inúmeros conflitos, pois o `master` já tinha mudado muito. Resolver isso era um processo manual, doloroso e imprevisível.</p>
+                    </div>
+
+                    <!-- Item: O que é CI -->
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                        <h3 class="font-semibold text-xl text-blue-800 mb-3">O que é Integração Contínua (CI)?</h3>
+                        <p class="text-gray-700 mb-4">É uma prática do XP baseada no princípio: "se causa dor, faça com mais frequência". Como grandes integrações causam dor, CI recomenda integrar o código de forma frequente e contínua.</p>
+                        <p class="text-gray-900 font-semibold text-lg text-center">Pelo menos uma integração por dia, por programador.</p>
+                        <p class="text-gray-700 mt-4">Com isso, as integrações são pequenas, geram menos conflitos e os problemas são detetados imediatamente.</p>
+                    </div>
+
+                    <!-- Item: Boas Práticas para CI -->
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                        <h3 class="font-semibold text-xl text-blue-800 mb-3">Boas Práticas para uso de CI</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-3">
+                            <li><strong>Build Automatizado:</strong> O processo de compilar e gerar a versão executável do sistema deve ser 100% automático e rápido (idealmente < 10 minutos).</li>
+                            <li><strong>Testes Automatizados:</strong> Garantir que o novo código não quebrou nada. Essencial para a segurança da prática.</li>
+                            <li><strong>Servidores de CI:</strong> Ferramentas (como Jenkins, Travis CI, GitHub Actions) que automaticamente detetam um novo commit, clonam o repositório, rodam o build e os testes, e notificam a equipa em caso de falha.</li>
+                            <li><strong>Desenvolvimento Baseado no Trunk (TBD):</strong> Evitar branches de longa duração. Todo o desenvolvimento acontece no `master`/`trunk`. Usado por Google e Facebook.</li>
+                            <li><strong>Programação em Pares:</strong> Considerada uma forma de "revisão de código contínua".</li>
+                        </ul>
+                    </div>
+
+                    <!-- Item: Quando não usar CI -->
+                    <div class="bg-blue-50 p-5 rounded-lg border border-blue-200">
+                        <h3 class="font-semibold text-xl text-blue-800 mb-3">Quando não usar CI? (ou adaptar)</h3>
+                        <p class="text-gray-700 mb-4">O limite de "1 commit por dia" pode não ser realista para todas as equipas. A prática deve ser adaptada. No entanto, CI não é compatível com projetos de código livre (onde programadores são voluntários e não têm obrigação diária), que dependem mais de *Pull Requests* e *Forks*.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Rodapé -->
+        <footer class="text-center mt-16 text-gray-500">
+            <p>Página de resumo gerada com base no Capítulo 10 de "Engenharia de Software Moderna".</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>
