@@ -1,7 +1,8 @@
 // JSX código import React from 'react';
 // A ideia do componente é facilitar o trabalho de construção da interface do usuário, dividindo-a em partes menores e reutilizáveis.
-
+import React from 'react';
 import {useState, useEffect} from 'react';
+import './app.css';
 
 import Nome from './components/Nome'; // Importa o componente Nome do arquivo src/components/Nome.js
 
@@ -104,7 +105,7 @@ function App2() {
 
 // O hook useEffect permite que você execute efeitos colaterais em componentes funcionais, como buscar dados, configurar assinaturas ou manipular o DOM diretamente.
 
-function App() {
+function App3() {
 
   const [tarefa, setTarefa] = useState('');
 
@@ -167,3 +168,49 @@ function App() {
     </div>
   );
 }
+
+// AULA - Requisições HTTP com react (fetch API):
+
+function App() {
+
+  const [nutri, setNutri] = useState([]);
+
+  function carregarApi() {
+      let url = 'https://sujeitoprogramador.com/rn-api/?api=posts';
+      fetch(url) // Faz uma requisição para a URL especificada.
+      .then((r) => r.json()) // Converte a resposta para JSON.
+      .then((json) => { // Manipula o JSON retornado.
+        console.log(json);
+        setNutri(json); // Atualiza o estado "nutri" com os dados recebidos da API.
+      })
+  }
+
+  useEffect(() => {
+
+    carregarApi();
+
+  }, []);
+
+  return(
+    <div className="container">
+
+      <header>
+        <strong>React Nutri</strong>
+      </header>
+
+      {nutri.map((item) => {
+        return(
+          <article key={item.id} className="post">
+            <strong className="titulo">{item.titulo}</strong>
+            <img className="capa" src={item.capa} alt={item.titulo} />
+            <p className="subtitulo">{item.subtitulo}</p>
+            <a className="botao">Acessar</a>
+          </article> 
+        )
+      })}
+    </div>
+  );
+}
+
+// https://sujeitoprogramador.com/rn-api/?api=posts
+
