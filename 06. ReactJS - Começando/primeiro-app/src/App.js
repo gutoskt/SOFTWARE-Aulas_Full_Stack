@@ -3,8 +3,9 @@
 import React from 'react';
 import {useState, useEffect} from 'react';
 import './app.css';
+import Header from './components/Header';
 
-import Nome from './components/Nome'; // Importa o componente Nome do arquivo src/components/Nome.js
+
 
 function App1() { // Isso é um componente funcional chamado App (Uma estrutura que sever como uma função que retorna um pedaço da interface do usuário).
 
@@ -171,7 +172,7 @@ function App3() {
 
 // AULA - Requisições HTTP com react (fetch API):
 
-function App() {
+function App5() {
 
   const [nutri, setNutri] = useState([]);
 
@@ -213,4 +214,19 @@ function App() {
 }
 
 // https://sujeitoprogramador.com/rn-api/?api=posts
+
+// AULA - Trabalhando com Rotas no ReactJS (Navegação entre Páginas):
+
+// npm install react-router-dom - Instala a biblioteca de rotas no ReactJS.
+
+import RoutesApp from './routes';
+
+function App() {
+
+  return(
+      <RoutesApp/>
+  );
+}
+
+// <> </> - Fragmento do React, usado para agrupar múltiplos elementos sem adicionar nós extras ao DOM.
 
