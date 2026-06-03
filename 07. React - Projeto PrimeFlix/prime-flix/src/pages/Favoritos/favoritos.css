@@ -76,3 +76,14 @@ body{
 
     color: #E50914;
 }
+
+/* ==========================================
+   Ajustes para Celulares (Telas até px)
+   ========================================== */
+@media (max-width: 500px) {
+  
+    .meus-filmes ul{
+
+        width: 110%;
+    }
+}

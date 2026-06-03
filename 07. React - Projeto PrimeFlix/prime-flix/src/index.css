@@ -59,3 +59,56 @@ body{
 .Toastify__close-button:hover {
   opacity: 1;
 }
+
+/* ==========================================
+   Ajustes para Celulares (Telas até 414px)
+   ========================================== */
+@media (max-width: 414px) {
+
+  /* Deixando o seletor mais forte combinando as classes. 
+     Isso vai forçar o celular a quebrar o padding de 40px lá de cima! */
+  body .Toastify__toast-container .Toastify__toast {
+    padding: 12px 14px !important; 
+    min-height: 48px !important;   
+    margin-bottom: 8px !important;
+  }
+
+  /* Ajusta o texto e o ícone de dentro do Toast no celular */
+  body .Toastify__toast-container .Toastify__toast-body {
+    font-size: 14px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Garante que o container inteiro não empurre a tela para os lados */
+  body .Toastify__toast-container {
+    width: 90% !important;
+    left: 5% !important;
+    margin: 0 auto !important;
+  }
+
+  /* ==========================================
+     Ajustes da página de Detalhes do Filme
+     ========================================== */
+  
+  /* Se a sua div principal na página de detalhes tiver outra classe, 
+     você pode adicionar aqui. Exemplo: .filme-info ou .container */
+  .filme-info, .container, .main-content { 
+    padding: 0 20px !important; 
+    box-sizing: border-box;
+  }
+
+  /* Força a imagem do filme a respeitar a tela do celular e não vazar */
+  img {
+    max-width: 100% !important; 
+    height: auto !important;
+    border-radius: 8px;
+  }
+
+  /* Ajusta os títulos grandes para o mobile */
+  h1, h2 {
+    font-size: 24px !important; 
+    text-align: center;
+    margin-top: 15px !important;
+  }
+}
