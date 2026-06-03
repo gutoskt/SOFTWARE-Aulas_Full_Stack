@@ -1,0 +1,31 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: sans-serif;
+
+}
+
+.container-erro{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 60px);
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container-erro a{
+    margin-top: 20px;
+    text-decoration: none;
+    color: #FFF;
+    background-color: #E50914;
+    padding: 10px 20px;
+    border-radius: 4px;
+}

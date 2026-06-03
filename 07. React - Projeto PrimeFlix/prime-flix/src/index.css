@@ -1,0 +1,61 @@
+*{
+
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: sans-serif;
+
+}
+
+.app{
+
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/* src/index.css */
+
+/* ... outros estilos que já estavam no seu arquivo ... */
+
+/* ADICIONE O SEU CÓDIGO DAQUI PARA BAIXO */
+/* ==========================================================================
+   SUAS CUSTOMIZAÇÕES DO REACT-TOASTIFY
+   ========================================================================== */
+
+/* ==========================================================================
+   FORÇANDO O FUNDO CINZA NO REACT-TOASTIFY
+   ========================================================================== */
+
+:root {
+  /* Mantém as cores dos ícones e barras de progresso */
+  --toastify-color-success: #10b981;    /* Verde */
+  --toastify-color-error: #ef4444;      /* Vermelho */
+  --toastify-color-warning: #f59e0b;    /* Amarelo/Laranja (igual ao da foto) */
+  --toastify-color-info: #3b82f6;       /* Azul */
+  
+  --toastify-toast-bd-radius: 5px;     /* Arredondamento que já funcionou */
+}
+
+/* Aplicando o fundo escuro e o texto branco para QUALQUER tipo de toast */
+.Toastify__toast {
+  background-color: #1e1e2f!important; /* Aqui aplicamos o cinza escuro diretamente */
+  color: #ffffff !important;            /* Força o texto a ficar branco */
+  font-family: sans-serif;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+  padding: 40px 16px !important;
+}
+
+/* Garante que o ícone de fechar (X) também fique visível no fundo escuro */
+.Toastify__close-button {
+  color: #ffffff !important;
+  opacity: 0.7;
+}
+.Toastify__close-button:hover {
+  opacity: 1;
+}
