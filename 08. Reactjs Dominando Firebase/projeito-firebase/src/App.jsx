@@ -1,83 +1,250 @@
-import { db } from './firebaseConnection' // Importa o banco de dados do Firebase para usar em outros arquivos do projeto
-import './app.css'
-import { useState } from 'react'
-import { doc, setDoc, collection, addDoc, getDoc} from 'firebase/firestore' // Importa as funções necessárias para trabalhar com o Firestore, o banco de dados do Firebase
+import { useState, useEffect } from 'react'
+import { db, auth } from './firebaseConnection';
 
+import { 
+  doc, 
+  setDoc, 
+  collection, 
+  addDoc, 
+  getDoc, 
+  getDocs, 
+  updateDoc, 
+  deleteDoc,
+  onSnapshot
+} from 'firebase/firestore'
+
+import { 
+  createUserWithEmailAndPassword 
+} from 'firebase/auth' /* Importa a forma de como criar um usuario com email e senha */
+
+import './app.css';
 
 function App() {
+  const [titulo, setTitulo] = useState('');
+  const [autor, setAutor] = useState('');
+  const [idPost, setIdPost] = useState('')
+
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function loadPosts(){
+      const unsub = onSnapshot(collection(db, "posts"), (snapshot) => {
+        let listaPost = [];
+
+        snapshot.forEach((doc) => {
+          listaPost.push({
+            id: doc.id,
+            titulo: doc.data().titulo,
+            autor: doc.data().autor,
+          })
+        })
   
-  const [titulo, setTitulo] = useState(''); // Estado para armazenar o título do post
-  const [autor, setAutor] = useState(''); // Estado para armazenar o autor do post
+        setPosts(listaPost);
+      })
+    }
 
-  async function handleAdd() {
-    /*await setDoc(doc(db, "posts", "12345"), { // Cria um novo documento no Firestore com o ID "12345" na coleção "posts"
+    loadPosts();
+
+  }, [])
+
+
+  async function handleAdd(){
+    // await setDoc(doc(db, "posts", "12345"), {
+    //   titulo: titulo,
+    //   autor: autor,
+    // })
+    // .then(() => {
+    //   console.log("DADOS REGISTRADO NO BANCO!")
+    // })
+    // .catch((error) => {
+    //   console.log("GEROU ERRO" + error)
+    // }) 
+
+
+    await addDoc(collection(db, "posts"), {
       titulo: titulo,
-      autor: autor
+      autor: autor,
     })
     .then(() => {
-      console.log("Documento adicionado com sucesso!"); // Exibe uma mensagem de sucesso no console
+      console.log("CADASTRADO COM SUCESSO")
+      setAutor('');
+      setTitulo('')
     })
     .catch((error) => {
-      console.error("Erro ao adicionar documento: ", error); // Exibe uma mensagem de erro no console caso ocorra algum problema ao adicionar o documento
-    });*/
+      console.log("ERRO " + error)
+    })
 
-    await addDoc(collection(db, "posts"), { // Cria um novo documento no Firestore com um ID gerado automaticamente na coleção "posts"
-      titulo: titulo,
-      autor: autor
-    })
-    .then(() => {
-      console.log("Documento adicionado com sucesso!"); // Exibe uma mensagem de sucesso no console
-      setTitulo(''); // Limpa o estado do título após adicionar o documento
-      setAutor(''); // Limpa o estado do autor após adicionar the documento
-    })
-    .catch((error) => {
-      console.error("Erro ao adicionar documento: ", error); // Exibe uma mensagem de erro no console caso ocorra algum problema ao adicionar o documento
-    });
 
   }
 
-  async function handleBuscar() {
 
-      const  postRef = doc(db, "posts", "123"); // Cria uma referência para o documento com o ID "12345" na coleção "posts"
+  async function buscarPost(){
+    // const postRef = doc(db, "posts", "vFvZAyFqebXFsFv0X89l")
+    // await getDoc(postRef)
+    // .then((snapshot) => {
+    //   setAutor(snapshot.data().autor)
+    //   setTitulo(snapshot.data().titulo)
 
-      await getDoc(postRef) // Busca o documento usando a referência criada
-      .then((snapshot) => { // snapshot é o resultado da busca, que contém os dados do documento
-        setAutor(snapshot.data().autor); // Atualiza o estado do autor com o valor do campo "autor" do documento
-        setTitulo(snapshot.data().titulo); // Atualiza o estado do título com o valor do campo "titulo" do documento
+    // })
+    // .catch(()=>{
+    //   console.log("ERRO AO BUSCAR")
+    // })
+
+    const postsRef = collection(db, "posts")
+    await getDocs(postsRef)
+    .then((snapshot) => {
+      let lista = [];
+
+      snapshot.forEach((doc) => {
+        lista.push({
+          id: doc.id,
+          titulo: doc.data().titulo,
+          autor: doc.data().autor,
+        })
       })
-      .catch((error) => {
-        console.error("Erro ao buscar documento: ", error); // Exibe uma mensagem de erro no console caso ocorra algum problema ao buscar o documento
-      });
+
+      setPosts(lista);
+
+    })
+    .catch((error) => {
+      console.log("DEU ALGUM ERRO AO BUSCAR")
+    })
+
+
+  }
+
+
+  async function editarPost(){
+    const docRef = doc(db, "posts", idPost)
+    
+    await updateDoc(docRef, {
+      titulo: titulo,
+      autor: autor
+    })
+    .then(() => {
+      console.log("POST ATUALIZADO!")
+      setIdPost('')
+      setTitulo('')
+      setAutor('')
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+
+
+  }
+
+
+  async function excluirPost(id){
+    const docRef = doc(db, "posts", id)
+    await deleteDoc(docRef)
+    .then(() =>{
+      alert("POST DELETADO COM SUCESSO!")
+    })
+
+  }
+
+  async function novoUsuario(){
+    await createUserWithEmailAndPassword(auth, email, senha) /* Await = esperar a promessa ser resolvida */
+    .then(() => {
+      console.log("CADASTRADO COM SUCESSO!")
+    
+      setEmail('')
+      setSenha('')
+    })
+    .catch((error) => {
+
+      if(error.code === 'auth/weak-password'){ /* Se o erro for de senha fraca */
+        alert("Senha muito fraca!")
+        return;
+      }
+      else if(error.code === 'auth/email-already-in-use'){ /* Se o erro for de email já cadastrado */
+        alert("Email já cadastrado!")
+        return;
+      }
+    })
   }
 
   return (
     <div>
-      <h1>ReactJs + Firebase</h1>
+      <h1>ReactJS + Firebase :)</h1>
 
-      <div className="container">
-        <label>Titulo:</label>
-        <textarea 
-          
-          type="text"
-          placeholder="Digite o título do post" 
-          value={titulo} // Define o valor do textarea como o estado titulo
-          onChange={(e) => setTitulo(e.target.value)} // Atualiza o estado titulo quando o valor do textarea mudar
-        />
+    <div className="container">
+      <h2>Usuarios</h2>
 
-        <label>Autor:</label>
-        <input 
-          type="text"
-          placeholder="Autor do post"
-          value={autor} // Define o valor do input como o estado autor
-          onChange={(e) => setAutor(e.target.value)} // Atualiza o estado autor quando o valor do input mudar 
-        />
+      <label>Email</label>
+      <input 
+        value={email}
+        onChange={(e) => setEmail(e.target.value)} 
+        placeholder="Digite um email"
+      /> <br/>
 
-        <button type="submit" onClick={handleAdd}>Cadastrar</button>
-        <button type="button" onClick={handleBuscar}>Buscar post</button>
+      <label>Senha</label>
+      <input 
+        value={senha}
+        onChange={(e) => setSenha(e.target.value)} 
+        placeholder="Informe sua senha"
+      /> <br/> 
 
-      </div>
+      <button onClick={novoUsuario}>Cadastrar</button>     
     </div>
-  )
+
+    <br/><br/>
+    <hr/>
+
+
+    <div className="container">
+      <h2>POSTS</h2>
+
+      <label>ID do Post:</label>
+      <input
+        placeholder='Digite o ID do post'
+        value={idPost}
+        onChange={ (e) => setIdPost(e.target.value) }
+      /> <br/>
+
+      <label>Titulo:</label>
+      <textarea 
+        type="text"
+        placeholder='Digite o titulo'
+        value={titulo}
+        onChange={ (e) => setTitulo(e.target.value) }
+      />
+
+      <label>Autor:</label>
+      <input 
+        type="text" 
+        placeholder="Autor do post"
+        value={autor}
+        onChange={(e) => setAutor(e.target.value) }
+      />
+
+      <button onClick={handleAdd}>Cadastrar</button>
+      <button onClick={buscarPost}>Buscar post</button> <br/>
+
+      <button onClick={editarPost}>Atualizar post</button>
+
+
+      <ul>
+        {posts.map( (post) => {
+          return(
+            <li key={post.id}>
+              <strong>ID: {post.id}</strong> <br/>
+              <span>Titulo: {post.titulo} </span> <br/>
+              <span>Autor: {post.autor}</span> <br/> 
+              <button onClick={ () => excluirPost(post.id) }>Excluir</button> <br/> <br/>
+            </li>
+          )
+        })}
+      </ul>
+
+    </div>
+
+    </div>
+  );
 }
 
-export default App
+export default App;
