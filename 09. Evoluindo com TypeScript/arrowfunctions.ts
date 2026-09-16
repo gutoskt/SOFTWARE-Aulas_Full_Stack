@@ -1,5 +1,3 @@
-
-
 // Exemplo com Arrow function
 
 // function retornoAPI(url: string): string {
