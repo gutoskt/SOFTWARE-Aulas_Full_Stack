@@ -50,3 +50,16 @@ Este repositório contém os exercícios, conceitos e projetos práticos desenvo
     ```
 📌 Desenvolvido para fins de estudo e prática do desenvolvimento Web Frontend.
 
+---
+
+## 📬 Contato
+
+Caso queira trocar uma ideia ou acompanhar meus projetos:
+
+- **LinkedIn:** [Carlos Augusto Nunes Vieira](https://www.linkedin.com/in/carlos-augusto-nunes-vieira-602833304)
+- **Instagram:** [@devgu_to](https://www.instagram.com/devgu_to)
+- **Portfólio Atual:** [projeto-portfolio-segundo.web.app](https://projeto-portfolio-segundo.web.app)
+
+---
+
+Feito com zelo por **Carlos Augusto** ❤️
