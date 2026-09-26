@@ -1,0 +1,17 @@
+@baseUrl = http://localhost:3000
+
+### Rota de teste
+GET {{baseUrl}}/teste
+
+### Rota padrão
+GET {{baseUrl}}
+
+### Rota de teste POST
+POST {{baseUrl}}/teste
+
+### Rota de teste GET de tasks
+GET {{baseUrl}}/tasks
+
+### Rota de teste GET de tasks (rota de teste específica)
+GET {{baseUrl}}/tasks/teste
+
