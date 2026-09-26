@@ -1,0 +1,66 @@
+### Configuração de Variáveis Locais
+@baseUrl = http://localhost:3333
+
+### ==========================================
+### ROTAS DE TAREFAS
+### ==========================================
+
+### 1. Listar todas as tarefas
+GET {{baseUrl}}/api/tarefas
+Content-Type: application/json
+
+###
+
+### 2. Buscar tarefa específica por ID
+GET {{baseUrl}}/api/tarefas/3
+Content-Type: application/json
+
+###
+
+### 3. Criar nova tarefa
+POST {{baseUrl}}/api/tarefas
+Content-Type: application/json
+
+{
+  "nome": ""
+}
+
+###
+
+### 4. Atualizar uma tarefa
+PUT {{baseUrl}}/api/tarefas/1
+Content-Type: application/json
+
+{
+  "nome": "Estudar Express, TypeScript e Docker"
+}
+
+###
+
+### 5. Eliminar uma tarefa
+DELETE {{baseUrl}}/api/tarefas/1
+
+### ==========================================
+### ROTAS DE AUTENTICAÇÃO / UTILIZADORES
+### ==========================================
+
+### 6. Criar nova conta
+POST {{baseUrl}}/users
+Content-Type: application/json
+
+{
+  "name": "Augusto",
+  "email": "augusto@teste.com",
+  "password": "123"
+}
+
+###
+
+### 7. Fazer Login
+POST {{baseUrl}}/session
+Content-Type: application/json
+
+{
+  "email": "augusto@teste.com",
+  "password": "123"
+}
